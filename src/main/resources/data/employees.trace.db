@@ -1,0 +1,10 @@
+2023-10-15 21:14:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BALLOT" not found; SQL statement:
+insert into ballot (election_id,submission_date,submitted,voter_id,ballot_id) values (?,?,?,?,default) [42102-214]
+2023-10-15 21:22:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "ARRAY [1, 2] (BALLOT: ""VOTER_ID"" INTEGER NOT NULL)"; SQL statement:
+insert into ballot (election_id,submission_date,submitted,voter_id,ballot_id) values (?,?,?,?,default) [22018-214]
+2023-10-15 21:24:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
+2023-10-15 21:27:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-214]
