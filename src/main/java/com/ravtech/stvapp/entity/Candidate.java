@@ -39,7 +39,7 @@ public class Candidate {
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                          CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "candidate_id")
+    @JoinColumn(name = "person_info_id")
     private PersonInfo personInfo;
 
     @OneToMany(mappedBy = "candidate",

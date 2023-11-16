@@ -19,7 +19,7 @@ public class Ballot {
     private String submissionDate;
 
     @OneToOne(mappedBy = "ballot",
-            cascade = {CascadeType.ALL})
+              cascade = {CascadeType.ALL})
     @JoinColumn(name = "election_id")
     private Election election;
 
