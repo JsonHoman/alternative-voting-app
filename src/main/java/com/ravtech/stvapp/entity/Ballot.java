@@ -2,28 +2,30 @@ package com.ravtech.stvapp.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "ballot")
 @Data
+@NoArgsConstructor
 public class Ballot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    // TODO: Don't want local date time.
-    @Column(name = "submission_date")
-    private String submissionDate;
-
     @OneToOne(mappedBy = "ballot",
               cascade = {CascadeType.ALL})
-    @JoinColumn(name = "election_id")
     private Election election;
 
-    @OneToMany(mappedBy = "ballot",
-               cascade = {CascadeType.ALL})
-    private List<BallotSelection> ballotSelection;
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ballot_id", referencedColumnName = "id")
+    private Set<BallotSelection> ballotSelections;
+
+    public Ballot(Set<BallotSelection> ballotSelections) {
+        this.ballotSelections = ballotSelections;
+    }
 }

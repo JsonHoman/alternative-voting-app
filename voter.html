@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Voting</title>
+	</head>
+	<body style="margin: 0; box-sizing: border-box;">
+
+		<br><br>
+
+		<div class="modal-container" style="display: flex; justify-content: center; align-items: center;">
+			<form action="/submit" method="post" >
+				<div style="padding: 1rem; border: .25rem solid black;">
+
+					<h1 style="margin-top: 0;">General Configuration</h1>
+
+					<div>
+						<label for="name">Election Name:</label>
+						<input type="text" id="name" name="name" required>
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Viewer Privacy:</h3>
+
+						<label for="ev_private">Private (voters only)</label>
+						<input type="radio" id="ev_private" name="election_viewer_privacy" value="Private">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="ev_public">Public</label>
+						<input type="radio" id="ev_public" name="election_viewer_privacy" value="Public">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="manually_select">Manually Select</label>
+						<input type="radio" id="manually_select" name="election_viewer_privacy" value="Manually Select">
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Preliminary Polling Feedback:</h3>
+
+						<label for="enabled">Enabled</label>
+						<input type="radio" id="enabled" name="preliminary_feedback" value="True">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="disabled">Disabled</label>
+						<input type="radio" id="disabled" name="preliminary_feedback" value="False">
+
+						<div style="background-color: grey;">
+							<p style="background-color: yellow;">(If "Enabled")</p>
+							<p>Preliminary Feedback Privacy Enforcement:</p>
+
+							<label for="pef_public">Public</label>
+							<input type="radio" id="pef_public" name="preliminary_feedback_privacy" value="Public">
+
+							<span style="display: inline-block; width: 2.5rem;"></span>
+
+							<label for="pef_private">Private</label>
+							<input type="radio" id="pef_private" name="preliminary_feedback_privacy" value="Private">
+
+							<span style="display: inline-block; width: 2.5rem;"></span>
+
+							<label for="not_enforced">User Determined</label>
+							<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+						</div>
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Polling Open Config:</h3>
+
+						<label for="not_enforced">Pre-Set</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">Manual</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<div style="background-color: grey;">
+							<p style="background-color: yellow;">(If "Pre-Set")</p>
+
+							<label for="datetimeInput">Select Date and Time:</label>
+							<input type="datetime-local" id="datetimeInput" name="datetimeInput">
+						</div>
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Polling Close Config:</h3>
+
+						<label for="not_enforced">Pre-Set</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">Manual</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<div style="background-color: grey;">
+							<p style="background-color: yellow;">(If "Pre-Set")</p>
+
+							<label for="datetimeInput">Select Date and Time:</label>
+							<input type="datetime-local" id="datetimeInput" name="datetimeInput">
+						</div>
+					</div>
+
+					<hr>
+
+					<div style="display: flex; justify-content: space-between;">
+						<button style="width: 0; border: 0; padding: 0;"></button>
+						<button>Cancel</button>
+						<button>Next</button>
+					</div>
+				</div>
+
+				<br><br>
+
+				<div style="padding: 1rem; border: .25rem solid black;">
+
+					<h1>Ballot Selections Configuration</h1>
+
+					<hr>
+
+					<div>
+						<label for="name">Title: *</label>
+						<br>
+						<input type="text" id="name" name="name" required>
+
+						<br><br>
+
+						<label for="name">Description:</label>
+						<br>
+						<textarea id="name" name="name"></textarea>
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Selection Types:</h3>
+
+						<label for="not_enforced">Candidate</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">Issue</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<div style="background-color: grey;">
+							<p style="background-color: yellow;">(If "Candidate")</p>
+
+							<label for="name">Candidate Search:</label>
+							<br>
+							<input type="text" id="name" name="name" required>
+
+							<br><br>
+
+							<button>Add</button>
+						</div>
+
+						<div style="background-color: grey;">
+							<p style="background-color: yellow;">(If "Issue")</p>
+
+							<label for="name">Title: *</label>
+							<br>
+							<input type="text" id="name" name="name" required>
+
+							<br><br>
+
+							<label for="name">Description:</label>
+							<br>
+							<textarea id="name" name="name"></textarea>
+
+							<br><br>
+
+							<button>Add</button>
+						</div>
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Calculation Type:</h3>
+
+						<label for="not_enforced">Plurality Vote</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">Rank Choice Vote</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">STAR Vote</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+					</div>
+
+					<hr>
+
+					<div style="display: flex; justify-content: space-between;">
+						<button>Previous</button>
+						<button>Cancel</button>
+						<button>Next</button>
+					</div>
+				</div>
+
+				<br><br>
+
+				<div style="padding: 1rem; border: .25rem solid black;">
+
+					<h1>Voter Selection Configuration</h1>
+
+					<hr>
+
+					<div>
+						<h3>Voter Invite Method:</h3>
+
+						<label for="not_enforced">Email</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">Text</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Enable Voters to Add Preliminary Ballot Selections?:</h3>
+
+						<label for="not_enforced">Yes</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+
+						<span style="display: inline-block; width: 2.5rem;"></span>
+
+						<label for="not_enforced">No</label>
+						<input type="radio" id="not_enforced" name="preliminary_feedback_privacy" value="Null">
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Max Ballot Selections to Carry Over to Final Ballot:</h3>
+
+						<label for="quantity">Quantity:</label>
+						<br>
+						<input type="number" id="quantity" name="quantity" min="0" max="100" step="1">
+					</div>
+
+					<hr>
+
+					<div>
+						<h3>Voter Selection:</h3>
+
+						<label for="name">Voter Search:</label>
+						<br>
+						<input type="text" id="name" name="name" required>
+
+						<br>
+
+						<ul>
+							<li>Jack Rogers</li>
+							<li>Voter Filter: Location (state) = Ohio, Michigan</li>
+							<li>Voter Group: 2022 Team</li>
+							<li>Voter Filter: Verification (level) = SA3</li>
+						</ul>
+
+						<button>Add</button>
+					</div>
+
+					<hr>
+
+					<div style="display: flex; justify-content: space-between;">
+						<button>Previous</button>
+						<button>Cancel</button>
+						<button type="submit">Create</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<br><br>
+
+	</body>
+</html>

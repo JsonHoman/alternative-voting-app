@@ -8,39 +8,33 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 CREATE TABLE `election` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `election_type` VARCHAR(255),
     `start_date` VARCHAR(255),
     `end_date` VARCHAR(255),
-    `round` INT,
     `ballot_id` INT,
     CONSTRAINT `FK_ballot_in_election` FOREIGN KEY (`ballot_id`) REFERENCES `ballot` (`id`),
     UNIQUE KEY `UK_ballot_in_election` (`ballot_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `election_voters` (
-    `election_id` INT,
+CREATE TABLE `election_voter` (
     `voter_id` INT,
-    PRIMARY KEY (`election_id`, `voter_id`),
-    CONSTRAINT `FK_election_in_election_voters` FOREIGN KEY (`election_id`) REFERENCES `election` (`id`),
-    CONSTRAINT `FK_voter_in_election_voters` FOREIGN KEY (`voter_id`) REFERENCES `voter` (`id`)
+    `election_id` INT,
+    PRIMARY KEY (`voter_id`, `election_id`),
+    CONSTRAINT `FK_voter_in_election_voter` FOREIGN KEY (`voter_id`) REFERENCES `voter` (`id`),
+    CONSTRAINT `FK_election_in_election_voter` FOREIGN KEY (`election_id`) REFERENCES `election` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `ballot` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `submission_date` VARCHAR(255),
-    `election_id` INT,
-    CONSTRAINT `FK_election_in_ballot` FOREIGN KEY (`election_id`) REFERENCES `election` (`id`),
-    UNIQUE KEY `UK_election_in_ballot` (`election_id`)
+    `id` INT AUTO_INCREMENT PRIMARY KEY
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `ballot_selection` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255),
     `description` VARCHAR(255),
-    `type` VARCHAR(255),
+    `election_type` VARCHAR(255),
+    `round` INT,
     `ballot_id` INT,
-    CONSTRAINT `FK_ballot_in_ballot_selection` FOREIGN KEY (`ballot_id`) REFERENCES `ballot` (`id`),
-    UNIQUE KEY `UK_ballot_in_ballot_selection` (`ballot_id`)
+    CONSTRAINT `FK_ballot_in_ballot_selection` FOREIGN KEY (`ballot_id`) REFERENCES `ballot` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `person_info` (
@@ -48,9 +42,9 @@ CREATE TABLE `person_info` (
     `sex` VARCHAR(255),
     `ethnicity` VARCHAR(255),
     `occupation` VARCHAR(255),
-    `placeOfBirth` VARCHAR(255),
-    `maritalStatus` VARCHAR(255),
-    `veteranStatus` VARCHAR(255)
+    `place_of_birth` VARCHAR(255),
+    `marital_status` VARCHAR(255),
+    `veteran_status` VARCHAR(255)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `candidate` (
@@ -61,7 +55,6 @@ CREATE TABLE `candidate` (
     `phone_number` VARCHAR(255),
     `address` VARCHAR(255),
     `date_of_birth` VARCHAR(255),
-    `candidate_id` INT,
     `ballot_selection_id` INT,
     `person_info_id` INT,
     CONSTRAINT `FK_ballot_selection_in_candidate` FOREIGN KEY (`ballot_selection_id`) REFERENCES `ballot_selection` (`id`),
@@ -78,6 +71,7 @@ CREATE TABLE `issue` (
 
 CREATE TABLE `vote` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `submission_date` VARCHAR(255),
     `issue_id` INT,
     `candidate_id` INT,
     CONSTRAINT `FK_issue_in_vote` FOREIGN KEY (`issue_id`) REFERENCES `issue` (`id`),
@@ -94,14 +88,6 @@ CREATE TABLE `voter` (
     `date_of_birth` VARCHAR(255),
     `person_info_id` INT,
     CONSTRAINT `FK_person_info_voter` FOREIGN KEY (`person_info_id`) REFERENCES `person_info` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `election_voter` (
-    `voter_id` INT,
-    `election_id` INT,
-    PRIMARY KEY (`voter_id`, `election_id`),
-    CONSTRAINT `FK_voter_in_election_voter` FOREIGN KEY (`voter_id`) REFERENCES `voter` (`id`),
-    CONSTRAINT `FK_election_in_election_voter` FOREIGN KEY (`election_id`) REFERENCES `election` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 SET FOREIGN_KEY_CHECKS = 1;
