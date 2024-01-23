@@ -7,10 +7,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "candidate")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
+@Getter @Setter @ToString
+@NoArgsConstructor @AllArgsConstructor @RequiredArgsConstructor
 public class Candidate {
 
     @Id
@@ -38,6 +36,7 @@ public class Candidate {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
+    @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                           CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "ballot_selection_id", referencedColumnName = "id")

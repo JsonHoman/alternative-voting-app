@@ -1,7 +1,5 @@
 package com.ravtech.stvapp.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.ravtech.stvapp.entity.deserializer.ElectionDeserializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +10,6 @@ import java.util.Set;
 @Table(name = "election")
 @Data
 @NoArgsConstructor
-//@JsonDeserialize(using = ElectionDeserializer.class)
 public class Election {
 
     @Id

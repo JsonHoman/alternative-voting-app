@@ -1,6 +1,6 @@
 package com.ravtech.stvapp.entity;
 
-import com.ravtech.stvapp.entity.pojo.ElectionType;
+import com.ravtech.stvapp.entity.enums.ElectionType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,10 +39,6 @@ public class BallotSelection {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                           CascadeType.PERSIST, CascadeType.REFRESH})
     private Ballot ballot;
-
-
-
-//    ----------------------------------------------------------------
 
     @OneToMany(mappedBy = "ballotSelection",
                cascade = {CascadeType.DETACH, CascadeType.MERGE,

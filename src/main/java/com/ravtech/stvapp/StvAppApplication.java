@@ -1,7 +1,7 @@
 package com.ravtech.stvapp;
 
 import com.ravtech.stvapp.entity.*;
-import com.ravtech.stvapp.entity.pojo.ElectionType;
+import com.ravtech.stvapp.entity.enums.ElectionType;
 import com.ravtech.stvapp.service.ElectionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

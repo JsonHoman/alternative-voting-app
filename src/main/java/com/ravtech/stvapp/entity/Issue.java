@@ -1,14 +1,13 @@
 package com.ravtech.stvapp.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "issue")
-@Data
+@Getter @Setter @ToString
 @NoArgsConstructor
 public class Issue {
 
@@ -23,6 +22,7 @@ public class Issue {
     @Column(name = "description")
     private String description;
 
+    @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                           CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "ballot_selection_id", referencedColumnName = "id")
@@ -48,9 +48,5 @@ public class Issue {
         this.description = otherInstance.getDescription();
         this.ballotSelection = otherInstance.getBallotSelection();
         this.votes = otherInstance.getVotes();
-    }
-
-    public void setBallotSelection(BallotSelection ballotSelection) {
-        this.ballotSelection = ballotSelection;
     }
 }
