@@ -25,7 +25,6 @@ public class Issue {
     @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                           CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "ballot_selection_id", referencedColumnName = "id")
     private BallotSelection ballotSelection;
 
     @OneToMany(mappedBy = "issue",

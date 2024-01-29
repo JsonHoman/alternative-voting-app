@@ -20,6 +20,9 @@ public class ElectionServiceImpl implements ElectionService {
     @Override
     @Transactional
     public Election createElection(Election election) {
-        return electionDAO.createElection(election);
+
+        // TODO: Add validation
+
+        return electionDAO.save(election);
     }
 }

@@ -40,13 +40,13 @@ public class BallotSelection {
                           CascadeType.PERSIST, CascadeType.REFRESH})
     private Ballot ballot;
 
-    @OneToMany(mappedBy = "ballotSelection",
-               cascade = {CascadeType.DETACH, CascadeType.MERGE,
+    @OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                           CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "ballot_selection_id", referencedColumnName = "id")
     private Set<Candidate> candidates;
 
-    @OneToMany(mappedBy = "ballotSelection",
-               cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ballot_selection_id", referencedColumnName = "id")
     private Set<Issue> issues;
 
     public BallotSelection(@NonNull String title, String description, @NonNull ElectionType electionType, Set<Candidate> candidates, Set<Issue> issues) {
