@@ -6,6 +6,20 @@ USE `alternative-voting-app`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
+CREATE TABLE `users` (
+    `username` varchar(50) NOT NULL,
+    `password` varchar(68) NOT NULL,
+    `enabled` tinyint NOT NULL,
+    PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `authorities` (
+    `username` varchar(50) NOT NULL,
+    `authority` varchar(50) NOT NULL,
+    UNIQUE KEY `UK_username_and_authority_in_authorities` (`username`, `authority`),
+    CONSTRAINT `FK_user_in_authority` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE `election` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `start_date` VARCHAR(255),
@@ -18,6 +32,8 @@ CREATE TABLE `election` (
 CREATE TABLE `election_voter` (
     `voter_id` INT,
     `election_id` INT,
+    `voter_accepted` BOOL,
+    `election_accepted` BOOL,
     PRIMARY KEY (`voter_id`, `election_id`),
     CONSTRAINT `FK_voter_in_election_voter` FOREIGN KEY (`voter_id`) REFERENCES `voter` (`id`),
     CONSTRAINT `FK_election_in_election_voter` FOREIGN KEY (`election_id`) REFERENCES `election` (`id`)
