@@ -1,4 +1,4 @@
-package com.ravtech.stvapp.controller.exceptions;
+package com.ravtech.stvapp.controller.exception;
 
 import com.ravtech.stvapp.controller.ElectionControllerV1;
 import jakarta.persistence.EntityNotFoundException;
@@ -46,6 +46,11 @@ public class ElectionExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleException(EntityNotFoundException ex) {
         return handleException(ex, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleException(QueryExecutionException ex) {
+        return handleException(ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler

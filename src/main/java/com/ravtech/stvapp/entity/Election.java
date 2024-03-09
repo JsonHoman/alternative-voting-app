@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.Set;
 
 @Entity
@@ -18,10 +20,16 @@ public class Election {
     private int id;
 
     @Column(name = "start_date", nullable = false)
-    private String startDate;
+    private ZonedDateTime startDate;
 
     @Column(name = "end_date")
-    private String endDate;
+    private ZonedDateTime endDate;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ballot_id")
@@ -34,7 +42,7 @@ public class Election {
                inverseJoinColumns = @JoinColumn(name = "voter_id"))
     private Set<Voter> voters;
 
-    public Election(String startDate, String endDate, Ballot ballot, Set<Voter> voters) {
+    public Election(ZonedDateTime startDate, ZonedDateTime endDate, Ballot ballot, Set<Voter> voters) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.ballot = ballot;

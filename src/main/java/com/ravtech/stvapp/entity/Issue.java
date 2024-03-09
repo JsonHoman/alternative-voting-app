@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "issue")
@@ -29,7 +30,7 @@ public class Issue {
 
     @OneToMany(mappedBy = "issue",
                cascade = {CascadeType.ALL})
-    private List<Vote> votes;
+    private Set<Vote> votes;
 
     public Issue(String title) {
         this.title = title;

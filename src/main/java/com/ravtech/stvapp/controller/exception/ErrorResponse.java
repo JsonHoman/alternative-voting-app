@@ -1,4 +1,4 @@
-package com.ravtech.stvapp.controller.exceptions;
+package com.ravtech.stvapp.controller.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

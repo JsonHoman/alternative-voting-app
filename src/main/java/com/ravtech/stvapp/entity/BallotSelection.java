@@ -1,6 +1,6 @@
 package com.ravtech.stvapp.entity;
 
-import com.ravtech.stvapp.entity.enums.ElectionType;
+import com.ravtech.stvapp.entity.enumeration.ElectionType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,7 +33,7 @@ public class BallotSelection {
     @Enumerated(EnumType.STRING)
     private ElectionType electionType;
 
-    @Column(name = "round")
+    @Column(name = "round", nullable = false)
     private int round = 1;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,

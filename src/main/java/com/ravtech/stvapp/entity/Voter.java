@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -23,17 +24,17 @@ public class Voter {
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
 
-	@Column(name = "email")
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
 
-	@Column(name = "address")
+	@Column(name = "address", nullable = false)
 	private String address;
 
-	@Column(name = "date_of_birth")
-	private String dateOfBirth;
+	@Column(name = "date_of_birth", nullable = false)
+	private LocalDate dateOfBirth;
 
 	@OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
 						 CascadeType.PERSIST, CascadeType.REFRESH})
@@ -48,12 +49,16 @@ public class Voter {
 			inverseJoinColumns = @JoinColumn(name = "election_id"))
 	private Set<Election> elections;
 
+	@OneToOne
+	@JoinColumn(name = "username", referencedColumnName = "username")
+	private User user;
+
 	public Voter(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 
-	public Voter(String firstName, String lastName, String email, String phoneNumber, String address, String dateOfBirth, PersonInfo personInfo) {
+	public Voter(String firstName, String lastName, String email, String phoneNumber, String address, LocalDate dateOfBirth, PersonInfo personInfo) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

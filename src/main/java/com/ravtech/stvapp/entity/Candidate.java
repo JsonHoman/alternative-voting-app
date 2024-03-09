@@ -3,7 +3,9 @@ package com.ravtech.stvapp.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "candidate")
@@ -24,17 +26,17 @@ public class Candidate {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    @Column(name = "date_of_birth", nullable = false)
+    private LocalDate dateOfBirth;
 
     @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
@@ -48,9 +50,9 @@ public class Candidate {
 
     @OneToMany(mappedBy = "candidate",
                cascade = {CascadeType.ALL})
-    private List<Vote> votes;
+    private Set<Vote> votes;
 
-    public Candidate(@NonNull String firstName, @NonNull String lastName, String email, String phoneNumber, String address, String dateOfBirth) {
+    public Candidate(@NonNull String firstName, @NonNull String lastName, String email, String phoneNumber, String address, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

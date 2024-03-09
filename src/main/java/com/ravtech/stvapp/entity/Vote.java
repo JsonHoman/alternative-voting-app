@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.NonNull;
 import lombok.Value;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "vote")
 @Value
@@ -21,7 +23,7 @@ public final class Vote {
     // TODO: Don't want local date time.
     @NonNull
     @Column(name = "submission_date")
-    private final String submissionDate;
+    private final Instant submissionDate;
 
     // TODO: ballot selection type should be in here too to ease queries -
     //  not really sure how to handle this yet, probably an interface
@@ -41,7 +43,7 @@ public final class Vote {
     //  CAST THE VOTE: USE A SET
 
     // TODO: ADD DEFENSIVE COPIES TO PARAMS
-    Vote(final int id, @NonNull final String submissionDate, final Issue issue, final Candidate candidate) {
+    Vote(final int id, @NonNull final Instant submissionDate, final Issue issue, final Candidate candidate) {
         this.id = id;
         this.submissionDate = submissionDate;
         this.issue = new Issue(issue);

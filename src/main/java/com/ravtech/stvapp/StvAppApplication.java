@@ -1,7 +1,7 @@
 package com.ravtech.stvapp;
 
 import com.ravtech.stvapp.entity.*;
-import com.ravtech.stvapp.entity.enums.ElectionType;
+import com.ravtech.stvapp.entity.enumeration.ElectionType;
 import com.ravtech.stvapp.service.ElectionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -9,11 +9,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@SpringBootApplication
 @Slf4j
+@SpringBootApplication
 public class StvAppApplication {
 
     public static void main(String[] args) {
@@ -79,7 +81,10 @@ public class StvAppApplication {
         Ballot ballot = new Ballot(ballotSelections);
 
         // CREATING ELECTION
-        Election election = new Election("starting now", "ending later", ballot, voters);
+        Election election = new Election(
+                ZonedDateTime.of(2024, 3, 10, 12, 0, 0, 0, ZoneId.of("EST")),
+                ZonedDateTime.of(2024, 3, 15, 12, 0, 0, 0, ZoneId.of("EST")),
+                ballot, voters);
 
         log.info("Creating election: " + election);
         electionService.createElection(election);

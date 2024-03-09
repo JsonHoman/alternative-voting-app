@@ -1,4 +1,4 @@
-package com.ravtech.stvapp.entity.enums;
+package com.ravtech.stvapp.entity.enumeration;
 
 public enum BallotSelectionType {
     ISSUE,
