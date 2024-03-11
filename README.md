@@ -3,7 +3,10 @@
 ---
 
 <b><u>Overview</u></b>: Application to create elections with candidates and/or issues. Ballots can be configured to 
-have ballot selections be calculated by Ranked Choice Voting (RCV) or Score Then Automatic Runoff (STAR).
+have ballot selections be calculated by Ranked Choice Voting (RCV) or Score Then Automatic Runoff (STAR). The intention 
+of the project is to create an internal data structure that is flexible to work with many different types of alternative 
+election styles in order to best suit an organizational need, while best representing the electorate, eliminating bias 
+any potential gaming or strategy working against an effective democratic process.
 
 ---
 
@@ -31,12 +34,11 @@ have ballot selections be calculated by Ranked Choice Voting (RCV) or Score Then
 [Jira Board Link](https://ravtechventures.atlassian.net/jira/software/projects/KAN/boards/1)
 
 ### Code Repository:
-1. Request Access from Admin (Email: homan.jason12@gmail.com, Username: JsonHoman)
-2. Clone [GitHub Repo](https://github.com/JsonHoman/java-stv-app.git)
+1. Clone [GitHub Repo](https://github.com/JsonHoman/java-stv-app.git)
 
 ### Database Local Setup:
 [(DB Entity Relationship Diagram)](documentation/entity-relationship-diagram.png)
-1. [Download MySQL Database]()
+1. [Download MySQL](https://dev.mysql.com/downloads/installer/)
 2. [Create User](src/main/resources/user.sql)
 3. [Create Schema](src/main/resources/schema.sql)
 4. [Create Sample Data](src/main/resources/data.sql)
