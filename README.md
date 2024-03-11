@@ -44,7 +44,7 @@ any potential gaming or strategy working against an effective democratic process
 4. [Create Sample Data](src/main/resources/data.sql)
 
 ### Design:
-[Google Doc Link](https://docs.google.com/drawings/d/1S6h1HfZosErk5BfBfAeNVLbGK6J5obK0e6uzEIf6rA8/edit)
+[Google Doc Link](https://drive.google.com/drive/folders/14_ZlDdg1soxUOSFS9K5BN5t8iWp0Fazy?usp=sharing)
 
 ### Postman:
 1. [Download](https://www.postman.com/downloads/)
@@ -54,6 +54,9 @@ any potential gaming or strategy working against an effective democratic process
 ---
 
 ## Configuration:
+
+### Configs:
+[Google Doc Link](https://drive.google.com/drive/folders/1lY1X5bdrofsyZqNDjGJVoYMpiHAgRb5_?usp=sharing)
 
 ---
 
