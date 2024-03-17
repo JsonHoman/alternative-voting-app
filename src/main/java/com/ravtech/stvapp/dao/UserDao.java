@@ -4,6 +4,8 @@ import com.ravtech.stvapp.entity.User;
 
 import java.util.Optional;
 
-public interface UserDAO {
+public interface UserDao {
     Optional<User> findByUsername(String username);
+
+    Optional<Integer> getUserIdByUsername(String username);
 }

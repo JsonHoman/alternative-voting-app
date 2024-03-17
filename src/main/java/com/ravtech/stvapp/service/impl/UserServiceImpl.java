@@ -1,6 +1,6 @@
 package com.ravtech.stvapp.service.impl;
 
-import com.ravtech.stvapp.dao.UserDAO;
+import com.ravtech.stvapp.dao.UserDao;
 import com.ravtech.stvapp.entity.Role;
 import com.ravtech.stvapp.entity.User;
 import com.ravtech.stvapp.service.UserService;
@@ -16,10 +16,10 @@ import java.util.Collection;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserDAO userDAO;
+    private final UserDao userDAO;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO) {
+    public UserServiceImpl(UserDao userDAO) {
         this.userDAO = userDAO;
     }
 

@@ -56,11 +56,10 @@ any potential gaming or strategy working against an effective democratic process
 ## Configuration:
 
 ### Configs:
-[Google Doc Link](https://drive.google.com/drive/folders/1lY1X5bdrofsyZqNDjGJVoYMpiHAgRb5_?usp=sharing)
 
 ---
 
-- empty
+[Google Doc Link](https://drive.google.com/drive/folders/1lY1X5bdrofsyZqNDjGJVoYMpiHAgRb5_?usp=sharing)
 
 ---
 

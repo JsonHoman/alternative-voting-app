@@ -60,13 +60,9 @@ public class ElectionControllerV1 {
             if (authentication != null) {
                 String username = authentication.getName();
 
-                // Use the username or identifier to obtain the voter ID from your user repository
-                int voterId = voterService.getVoterIdByUsername(username);
+                log.info("Reading all elections with Username: " + username);
 
-                log.info("Reading all elections with Voter ID: " + voterId);
-
-                // for the specific voter
-                List<Election> readVoterElections = electionService.getVoterElections(voterId);
+                List<Election> readVoterElections = electionService.getVoterElections(username);
 
                 // TODO: Handle empty list. Do we want a list or a set returned?
 
