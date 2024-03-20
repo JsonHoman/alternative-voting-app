@@ -52,17 +52,18 @@ public class ElectionControllerV1 {
 
     @GetMapping("/elections")
     public ResponseEntity<List<Election>> readVoterElections() {
-
         try {
+            log.info("Reading voter election");
+
             // Get the currently authenticated user
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
             if (authentication != null) {
                 String username = authentication.getName();
 
-                log.info("Reading all elections with Username: " + username);
+                log.info("Username: " + username);
 
-                List<Election> readVoterElections = electionService.getVoterElections(username);
+                List<Election> readVoterElections = voterService.getElections(username);
 
                 // TODO: Handle empty list. Do we want a list or a set returned?
 
